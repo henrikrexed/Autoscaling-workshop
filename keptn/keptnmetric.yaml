@@ -1,0 +1,65 @@
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-checkoutservice-envoy
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "envoy_server_total_connections:filter(and(or(eq(\"k8s.namespace.name\",hipster-shop)),or(eq(\"k8s.deployment.name\",checkoutservice)))):splitBy(\"k8s.pod.name\"):sort(value(auto,descending))"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-frontend-envoy
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "envoy_server_total_connections:filter(and(or(eq(\"k8s.namespace.name\",hipster-shop)),or(eq(\"k8s.deployment.name\",frontend)))):splitBy(\"k8s.pod.name\"):sort(value(auto,descending))"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-recommendationservice-envoy
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "envoy_server_total_connections:filter(and(or(eq(\"k8s.namespace.name\",hipster-shop)),or(eq(\"k8s.deployment.name\",recommendationservice)))):splitBy(\"k8s.pod.name\"):sort(value(auto,descending))"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-productcatalogservice-envoy
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "envoy_server_total_connections:filter(and(or(eq(\"k8s.namespace.name\",hipster-shop)),or(eq(\"k8s.deployment.name\",productcatalogservice)))):splitBy(\"k8s.pod.name\"):sort(value(auto,descending))"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-cartservice-envoy
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "envoy_server_total_connections:filter(and(or(eq(\"k8s.namespace.name\",hipster-shop)),or(eq(\"k8s.deployment.name\",cartservice)))):splitBy(\"k8s.pod.name\"):sort(value(auto,descending))"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-paymentservice-envoy
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "envoy_server_total_connections:filter(and(or(eq(\"k8s.namespace.name\",hipster-shop)),or(eq(\"k8s.deployment.name\",paymentservice)))):splitBy(\"k8s.pod.name\"):sort(value(auto,descending))"
+  fetchIntervalSeconds: 5

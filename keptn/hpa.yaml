@@ -1,0 +1,149 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-checkout
+  namespace: hipster-shop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: checkoutservice
+  minReplicas: 1
+  maxReplicas: 15
+  metrics:
+    - type: Object
+      object:
+        metric:
+          name: keptnmetric-checkoutservice-envoy
+        describedObject:
+          apiVersion: metrics.keptn.sh/v1alpha1
+          kind: KeptnMetric
+          name: keptnmetric-checkoutservice-envoy
+        target:
+          type: Value
+          value: "12"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-frontend
+  namespace: hipster-shop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+  minReplicas: 1
+  maxReplicas: 15
+  metrics:
+    - type: Object
+      object:
+        metric:
+          name: keptnmetric-frontend-envoy
+        describedObject:
+          apiVersion: metrics.keptn.sh/v1alpha1
+          kind: KeptnMetric
+          name: keptnmetric-frontend-envoy
+        target:
+          type: Value
+          value: "120"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-recommendation
+  namespace: hipster-shop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: recommendationservice
+  minReplicas: 1
+  maxReplicas: 15
+  metrics:
+    - type: Object
+      object:
+        metric:
+          name: keptnmetric-recommendationservice-envoy
+        describedObject:
+          apiVersion: metrics.keptn.sh/v1alpha1
+          kind: KeptnMetric
+          name: keptnmetric-recommendationservice-envoy
+        target:
+          type: Value
+          value: "8"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-productcalalog
+  namespace: hipster-shop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: productcatalogservice
+  minReplicas: 1
+  maxReplicas: 15
+  metrics:
+    - type: Object
+      object:
+        metric:
+          name: keptnmetric-productcatalogservice-envoy
+        describedObject:
+          apiVersion: metrics.keptn.sh/v1alpha1
+          kind: KeptnMetric
+          name: keptnmetric-productcatalogservice-envoy
+        target:
+          type: Value
+          value: "15"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-cartservice
+  namespace: hipster-shop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cartservice
+  minReplicas: 1
+  maxReplicas: 15
+  metrics:
+    - type: Object
+      object:
+        metric:
+          name: keptnmetric-cartservice-envoy
+        describedObject:
+          apiVersion: metrics.keptn.sh/v1alpha1
+          kind: KeptnMetric
+          name: keptnmetric-cartservice-envoy
+        target:
+          type: Value
+          value: "9"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-paymentservice
+  namespace: hipster-shop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: paymentservice
+  minReplicas: 1
+  maxReplicas: 15
+  metrics:
+    - type: Object
+      object:
+        metric:
+          name: keptnmetric-paymentservice-envoy
+        describedObject:
+          apiVersion: metrics.keptn.sh/v1alpha1
+          kind: KeptnMetric
+          name: keptnmetric-paymentservice-envoy
+        target:
+          type: Value
+          value: "6"

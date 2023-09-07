@@ -1,0 +1,1075 @@
+{
+  "metadata": {
+    "configurationVersions": [
+      7
+    ],
+    "clusterVersion": "1.272.0.20230707-084854"
+  },
+  "id": "72cc99f4-2981-4b4e-a437-5e94cd2fc728",
+  "dashboardMetadata": {
+    "name": "Cluster efficiency",
+    "shared": false,
+    "owner": "henrik.rexed@dynatrace.com",
+    "popularity": 10,
+    "hasConsistentColors": false
+  },
+  "tiles": [
+    {
+      "name": "Workload CPU efficiency",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 0,
+        "width": 342,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "dt.entity.cloud_application"
+          ],
+          "metricSelector": "(builtin:kubernetes.workload.cpu_usage:splitBy(\"dt.entity.cloud_application\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.workload.requests_cpu:splitBy(\"dt.entity.cloud_application\"):sort(value(auto,descending)):limit(20)) *100",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "HONEYCOMB",
+        "global": {
+          "hideLegend": true
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "value": 90,
+                "color": "#7dc540"
+              },
+              {
+                "value": 60,
+                "color": "#f5d30f"
+              },
+              {
+                "value": 3,
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": true
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": true
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&((builtin:kubernetes.workload.cpu_usage:splitBy(\"dt.entity.cloud_application\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.workload.requests_cpu:splitBy(\"dt.entity.cloud_application\"):sort(value(auto,descending)):limit(20))*100):names"
+      ]
+    },
+    {
+      "name": "Workload Memory efficiency",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 342,
+        "width": 342,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "dt.entity.cloud_application"
+          ],
+          "metricSelector": "(builtin:kubernetes.workload.memory_working_set:splitBy(\"dt.entity.cloud_application\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.workload.requests_memory:splitBy():sort(value(auto,descending)):limit(20))*100",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "HONEYCOMB",
+        "global": {
+          "hideLegend": true
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "value": 90,
+                "color": "#7dc540"
+              },
+              {
+                "value": 60,
+                "color": "#f5d30f"
+              },
+              {
+                "value": 3,
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": true
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": true
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&((builtin:kubernetes.workload.memory_working_set:splitBy(\"dt.entity.cloud_application\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.workload.requests_memory:splitBy():sort(value(auto,descending)):limit(20))*100):names"
+      ]
+    },
+    {
+      "name": "node memory efficiency",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 228,
+        "width": 304,
+        "height": 266
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "dt.entity.kubernetes_node"
+          ],
+          "metricSelector": "(builtin:kubernetes.node.memory_working_set:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.node.requests_memory:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20))*100",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "HONEYCOMB",
+        "global": {
+          "hideLegend": true
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "value": 90,
+                "color": "#7dc540"
+              },
+              {
+                "value": 60,
+                "color": "#f5d30f"
+              },
+              {
+                "value": 3,
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": true
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": true
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&((builtin:kubernetes.node.memory_working_set:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.node.requests_memory:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20))*100):names"
+      ]
+    },
+    {
+      "name": "node cpu node efficiency",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 532,
+        "width": 304,
+        "height": 266
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "dt.entity.kubernetes_node"
+          ],
+          "metricSelector": "(builtin:kubernetes.node.cpu_usage:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.node.requests_cpu:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20)) *100",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "HONEYCOMB",
+        "global": {
+          "hideLegend": true
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "value": 90,
+                "color": "#7dc540"
+              },
+              {
+                "value": 60,
+                "color": "#f5d30f"
+              },
+              {
+                "value": 3,
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": true
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": true
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&((builtin:kubernetes.node.cpu_usage:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.node.requests_cpu:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20))*100):names"
+      ]
+    },
+    {
+      "name": "Pod per nodes",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 836,
+        "width": 494,
+        "height": 266
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "builtin:kubernetes.node.pods",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "dt.entity.kubernetes_node"
+          ],
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "PIE_CHART",
+        "global": {
+          "hideLegend": false
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "value": 90,
+                "color": "#7dc540"
+              },
+              {
+                "value": 60,
+                "color": "#f5d30f"
+              },
+              {
+                "value": 3,
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": true
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": true
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&(builtin:kubernetes.node.pods:splitBy(\"dt.entity.kubernetes_node\"):sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
+      "name": "Node",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 684,
+        "left": 0,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false
+    },
+    {
+      "name": "Pod",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false
+    },
+    {
+      "name": "Workload Memory efficiency",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 684,
+        "width": 342,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "dt.entity.cloud_application"
+          ],
+          "metricSelector": "((builtin:kubernetes.workload.memory_working_set:splitBy(\"dt.entity.cloud_application\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.workload.requests_memory:splitBy():sort(value(auto,descending)):limit(20))*100):sort(value(auto,ascending))",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TOP_LIST",
+        "global": {
+          "hideLegend": true
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "value": 90,
+                "color": "#7dc540"
+              },
+              {
+                "value": 60,
+                "color": "#f5d30f"
+              },
+              {
+                "value": 3,
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": true
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": true
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&(((builtin:kubernetes.workload.memory_working_set:splitBy(\"dt.entity.cloud_application\"):sort(value(auto,descending)):limit(20))/(builtin:kubernetes.workload.requests_memory:splitBy():sort(value(auto,descending)):limit(20))*100):sort(value(auto,ascending))):limit(100):names"
+      ]
+    },
+    {
+      "name": "Namespace efficiency",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 0,
+        "width": 418,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "dt.entity.cloud_application_namespace"
+          ],
+          "metricSelector": "((builtin:kubernetes.workload.cpu_usage:filter(and(or(ne(\"dt.entity.cloud_application_namespace\",\"CLOUD_APPLICATION_NAMESPACE-79370B3A20D99360\")))):splitBy(\"dt.entity.cloud_application_namespace\"):sum:sort(value(sum,descending)))/(builtin:kubernetes.workload.requests_cpu:filter(and(or(ne(\"dt.entity.cloud_application_namespace\",\"CLOUD_APPLICATION_NAMESPACE-79370B3A20D99360\")))):splitBy(\"dt.entity.cloud_application_namespace\"):sum:sort(value(sum,descending)))*100):sort(value(auto,ascending))",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TOP_LIST",
+        "global": {
+          "hideLegend": true
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "value": 90,
+                "color": "#7dc540"
+              },
+              {
+                "value": 60,
+                "color": "#f5d30f"
+              },
+              {
+                "value": 3,
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": true
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": true
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&(((builtin:kubernetes.workload.cpu_usage:filter(and(or(ne(\"dt.entity.cloud_application_namespace\",CLOUD_APPLICATION_NAMESPACE-79370B3A20D99360)))):splitBy(\"dt.entity.cloud_application_namespace\"):sum:sort(value(sum,descending)))/(builtin:kubernetes.workload.requests_cpu:filter(and(or(ne(\"dt.entity.cloud_application_namespace\",CLOUD_APPLICATION_NAMESPACE-79370B3A20D99360)))):splitBy(\"dt.entity.cloud_application_namespace\"):sum:sort(value(sum,descending)))*100):sort(value(auto,ascending))):limit(100):names"
+      ]
+    },
+    {
+      "name": "node monthly cost",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 760,
+        "left": 0,
+        "width": 228,
+        "height": 266
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "node"
+          ],
+          "metricSelector": "(node_total_hourly_cost:splitBy(node):sort(value(auto,descending)))*730",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "HONEYCOMB",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": true
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&((node_total_hourly_cost:splitBy(node):sort(value(auto,descending)))*730):names"
+      ]
+    },
+    {
+      "name": "namespace",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 342,
+        "left": 0,
+        "width": 304,
+        "height": 38
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false
+    },
+    {
+      "name": "namespace CPU monthly cost",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 418,
+        "width": 418,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "namespace"
+          ],
+          "metricSelector": "(container_cpu_allocation:splitBy(\"namespace\"):filter(and(or(ne(\"namespace\",\"dynatrace\")))):sort(value(auto,descending)))*(node_cpu_hourly_cost:splitBy():sort(value(auto,descending)):limit(1)):sort(value(auto,ascending))*730",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TOP_LIST",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&((container_cpu_allocation:splitBy(namespace):filter(and(or(ne(namespace,dynatrace)))):sort(value(auto,descending)))*(node_cpu_hourly_cost:splitBy():sort(value(auto,descending)):limit(1)):sort(value(auto,ascending))*730):limit(100):names"
+      ]
+    },
+    {
+      "name": "Namespace memory monthly cost",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 836,
+        "width": 494,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "namespace"
+          ],
+          "metricSelector": "(container_memory_allocation_bytes:filter(and(or(ne(namespace,dynatrace)))):splitBy(namespace):sort(value(auto,descending)))*1E-09*730*(node_ram_hourly_cost:splitBy():sort(value(auto,descending)):limit(1))",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TOP_LIST",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "unitTransform": "auto",
+            "valueFormat": "auto",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "LINE"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&((container_memory_allocation_bytes:filter(and(or(ne(namespace,dynatrace)))):splitBy(namespace):sort(value(auto,descending)))*1.0E-9*730*(node_ram_hourly_cost:splitBy():sort(value(auto,descending)):limit(1))):limit(100):names"
+      ]
+    },
+    {
+      "name": "% cpu throttling ",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 1026,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "k8s.namespace.name",
+            "k8s.workload.name"
+          ],
+          "metricSelector": "((\nbuiltin:kubernetes.workload.cpu_throttled\n:splitBy(\"k8s.namespace.name\",\"k8s.workload.name\")\n:sum\n/\nbuiltin:kubernetes.workload.cpu_usage\n:splitBy(\"k8s.namespace.name\",\"k8s.workload.name\")\n:sum\n)\n:default(0.0)\n*\n100.0):setUnit(Percent):sort(value(auto,descending))",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TOP_LIST",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(((builtin:kubernetes.workload.cpu_throttled:splitBy(\"k8s.namespace.name\",\"k8s.workload.name\"):sum/builtin:kubernetes.workload.cpu_usage:splitBy(\"k8s.namespace.name\",\"k8s.workload.name\"):sum):default(0.0)*100.0):setUnit(Percent):sort(value(auto,descending))):limit(100):names:fold(auto)"
+      ]
+    }
+  ]
+}

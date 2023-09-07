@@ -1,0 +1,23 @@
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetricsProvider
+metadata:
+  name: dynatrace
+  namespace: hipster-shop
+spec:
+  type: dynatrace
+  targetServer: "https://bix24852.dev.dynatracelabs.com"
+  secretKeyRef:
+    name: dynatrace
+    key: dt_api_token
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetricsProvider
+metadata:
+  name: dynatrace-dql
+  namespace: hipster-shop
+spec:
+  type: dql
+  targetServer: "https://bix24852.dev.dynatracelabs.com"
+  secretKeyRef:
+    name: dynatrace
+    key: dt_api_token

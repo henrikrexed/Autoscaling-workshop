@@ -1,0 +1,65 @@
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-checkoutservice-throt
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "((builtin:kubernetes.workload.cpu_throttled:filter(eq(\"k8s.workload.name\",\"checkoutservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum/builtin:kubernetes.workload.cpu_usage:filter(eq(\"k8s.deployment.name\",\"checkoutservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum):default(0.0)*100.0)"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-frontend-throt
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "((builtin:kubernetes.workload.cpu_throttled:filter(eq(\"k8s.workload.name\",\"frontend\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum/builtin:kubernetes.workload.cpu_usage:filter(eq(\"k8s.deployment.name\",\"frontend\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum):default(0.0)*100.0)"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-recommendationservice-throt
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "((builtin:kubernetes.workload.cpu_throttled:filter(eq(\"k8s.workload.name\",\"recommendationservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum/builtin:kubernetes.workload.cpu_usage:filter(eq(\"k8s.deployment.name\",\"recommendationservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum):default(0.0)*100.0)"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-productcatalogservice-throt
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "((builtin:kubernetes.workload.cpu_throttled:filter(eq(\"k8s.workload.name\",\"productcatalogservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum/builtin:kubernetes.workload.cpu_usage:filter(eq(\"k8s.deployment.name\",\"productcatalogservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum):default(0.0)*100.0)"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-cartservice-throt
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "((builtin:kubernetes.workload.cpu_throttled:filter(eq(\"k8s.workload.name\",\"cartservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum/builtin:kubernetes.workload.cpu_usage:filter(eq(\"k8s.deployment.name\",\"cartservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum):default(0.0)*100.0)"
+  fetchIntervalSeconds: 5
+---
+apiVersion: metrics.keptn.sh/v1alpha3
+kind: KeptnMetric
+metadata:
+  name: keptnmetric-paymentservice-throt
+  namespace: hipster-shop
+spec:
+  provider:
+    name: "dynatrace"
+  query: "((builtin:kubernetes.workload.cpu_throttled:filter(eq(\"k8s.workload.name\",\"paymentservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum/builtin:kubernetes.workload.cpu_usage:filter(eq(\"k8s.deployment.name\",\"paymentservice\")):splitBy(\"k8s.namespace.name\",\"k8s.workload.kind\",\"k8s.workload.name\"):sum):default(0.0)*100.0)"
+  fetchIntervalSeconds: 5
